@@ -53,6 +53,7 @@ public class PollServiceServer {
     public void createPoll(PollRequest req, StreamObserver<PollResponse> responseObserver) {
         String poll_Id = Long.toHexString(++pollId);
 	PollResponse reply = PollResponse.newBuilder().setId(poll_Id).build();
+	logger.info("Moderator Id: " + req.getModeratorId());
 	System.out.println("Moderator Id: " + req.getModeratorId());
       responseObserver.onValue(reply);
       responseObserver.onCompleted();
